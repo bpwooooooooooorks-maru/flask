@@ -12,5 +12,10 @@
         <input type="text" id="url" name="url" required>
         <button type="submit">ok</button>
     </form>
+    
+    {% if download_url %}
+        <h2>link:</h2>
+        <a href="{{ url_for('download_file', filename=download_url) }}">{{ download_url }}</a>
+    {% endif %}
 </body>
 </html>
