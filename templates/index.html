@@ -15,6 +15,10 @@
             text-align: center;
             color: #333;
         }
+        h3 {
+            text-align: center;
+            color: #333;
+        }
         form {
             max-width: 600px;
             margin: 0 auto;
@@ -73,7 +77,7 @@
     </form>
     
     {% if download_url %}
-        <h2>ダウンロードリンク:</h2>
+        <h3>ダウンロードリンク:</h3>
         <a href="{{ url_for('download_file', filename=download_url) }}">{{ download_url }}</a>
     {% endif %}
 </body>
