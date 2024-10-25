@@ -11,11 +11,7 @@
             padding: 20px;
             background-color: #f8f9fa;
         }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        h3 {
+        h1,h3 {
             text-align: center;
             color: #333;
         }
@@ -69,6 +65,16 @@
     </style>
 </head>
 <body>
+    <script>
+        document.getElementById('url').addEventListener('focus', async () => {
+            try {
+                const text = await navigator.clipboard.readText();
+                document.getElementById('url').value = text; // 自動ペースト
+            } catch (err) {
+                console.error('クリップボードの取得に失敗しました: ', err);
+            }
+        });
+    </script>
     <h1>dl</h1>
     <form method="post">
         <label for="url">URL:</label>
