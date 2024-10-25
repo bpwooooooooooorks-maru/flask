@@ -11,7 +11,7 @@
             padding: 20px;
             background-color: #f8f9fa;
         }
-        h1, h3 {
+        h1, h3 , h4{
             text-align: center;
             color: #333;
         }
@@ -22,8 +22,13 @@
             flex-direction: column;
             gap: 15px; /* テキストボックスの間隔を広げる */
         }
+        .url-field {
+            display: flex;
+            flex-direction: column;
+        }
         label {
             font-size: 1.2em;
+            margin-bottom: 5px; /* ラベルとテキストボックスの間隔 */
         }
         input[type="text"] {
             padding: 10px;
@@ -75,25 +80,49 @@
 </head>
 <body>
     <script>
+        let urlCount = 1; // URLフィールドの数をカウント
+
         function addUrlField() {
             const container = document.getElementById('url-container');
+            urlCount++;
+
+            // 新しいフィールドを作成するためのdiv
+            const fieldContainer = document.createElement('div');
+            fieldContainer.classList.add('url-field');
+
+            // 新しいラベルを作成
+            const label = document.createElement('label');
+            label.htmlFor = 'url' + urlCount;
+            label.textContent = 'URL ' + urlCount + ':';
+
+            // 新しいテキストボックスを作成
             const input = document.createElement('input');
             input.type = 'text';
+            input.id = 'url' + urlCount;
             input.name = 'url';
             input.placeholder = 'URLを入力';
             input.required = true;
-            input.classList.add('url-input'); // クラスを追加
-            container.appendChild(input);
+            input.classList.add('url-input');
+
+            // フィールドコンテナにラベルと入力を追加
+            fieldContainer.appendChild(label);
+            fieldContainer.appendChild(input);
+
+            // メインのコンテナに追加
+            container.appendChild(fieldContainer);
         }
     </script>
-    <h1>dl</h1>
+    <h1>TikTokダウンロード</h1>
+    <h4><a href="https://www.instagram.com/hoshinogenkyosei" target="_blank">@hoshinogenkyosei</a></h4>
     <form method="post">
         <div id="url-container">
-            <label for="url">URL:</label>
-            <input type="text" id="url" name="url" required class="url-input"> <!-- クラスを追加 -->
+            <div class="url-field">
+                <label for="url1">URL 1:</label>
+                <input type="text" id="url1" name="url" required class="url-input">
+            </div>
         </div>
         <button type="button" class="add-button" onclick="addUrlField()">追加</button>
-        <button type="submit" class="submit-button">OK</button>
+        <button type="submit" class="submit-button">保存</button>
     </form>
     
     {% if download_urls %}
