@@ -1,93 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>uhs</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f8f9fa;
-        }
-        h1,h3 {
-            text-align: center;
-            color: #333;
-        }
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        label {
-            font-size: 1.2em;
-        }
-        input[type="text"] {
-            padding: 10px;
-            font-size: 1em;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            padding: 10px;
-            font-size: 1em;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        a {
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-            color: #007bff;
-            text-decoration: none;
-            font-size: 1.2em;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            form {
-                padding: 0 10px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <script>
-        document.getElementById('url').addEventListener('focus', async () => {
-            try {
-                const text = await navigator.clipboard.readText();
-                document.getElementById('url').value = text; // 自動ペースト
-            } catch (err) {
-                console.error('クリップボードの取得に失敗しました: ', err);
-            }
-        });
-    </script>
-    <h1>dl</h1>
-    <form method="post">
-        <label for="url">URL:</label>
-        <input type="text" id="url" name="url" required>
-        <button type="submit">OK</button>
-    </form>
-    
-    {% if download_url %}
-        <h3>ダウンロードリンク:</h3>
-        <a href="{{ url_for('download_file', filename=download_url) }}">{{ download_url }}</a>
-    {% endif %}
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -101,7 +11,7 @@
             padding: 20px;
             background-color: #f8f9fa;
         }
-        h1,h3 {
+        h1, h3 {
             text-align: center;
             color: #333;
         }
@@ -110,7 +20,7 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px; /* テキストボックスの間隔を広げる */
         }
         label {
             font-size: 1.2em;
@@ -122,16 +32,17 @@
             border-radius: 5px;
         }
         button {
-            padding: 10px;
+            padding: 12px; /* ボタンのパディングを増やす */
             font-size: 1em;
             color: #fff;
-            background-color: #007bff;
+            background-color: #28a745; /* ボタンの色を緑に変更 */
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            text-align: center;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #218838; /* ホバー時の色 */
         }
         a {
             display: block;
