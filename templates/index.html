@@ -35,13 +35,23 @@
             padding: 12px; /* ボタンのパディングを増やす */
             font-size: 1em;
             color: #fff;
-            background-color: #28a745; /* ボタンの色を緑に変更 */
             border: none;
             border-radius: 5px;
             cursor: pointer;
             text-align: center;
         }
-        button:hover {
+        /* 追加ボタンのスタイル */
+        .add-button {
+            background-color: #007bff; /* 青色 */
+        }
+        .add-button:hover {
+            background-color: #0056b3; /* ホバー時の色 */
+        }
+        /* OKボタンのスタイル */
+        .submit-button {
+            background-color: #28a745; /* 緑色 */
+        }
+        .submit-button:hover {
             background-color: #218838; /* ホバー時の色 */
         }
         a {
@@ -67,14 +77,7 @@
 </head>
 <body>
     <script>
-        document.getElementById('url').addEventListener('focus', async () => {
-            try {
-                const text = await navigator.clipboard.readText();
-                document.getElementById('url').value = text; // 自動ペースト
-            } catch (err) {
-                console.error('クリップボードの取得に失敗しました: ', err);
-            }
-        });
+
 
         function addUrlField() {
             const container = document.getElementById('url-container');
@@ -96,8 +99,8 @@
             <label for="url">URL:</label>
             <input type="text" id="url" name="url" required>
         </div>
-        <button type="button" onclick="addUrlField()">追加</button>
-        <button type="submit">OK</button>
+        <button type="button" class="add-button" onclick="addUrlField()">追加</button>
+        <button type="submit" class="submit-button">OK</button>
     </form>
     
     {% if download_urls %}
