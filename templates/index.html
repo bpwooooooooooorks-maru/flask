@@ -32,7 +32,7 @@
             border-radius: 5px;
         }
         button {
-            padding: 12px; /* ボタンのパディングを増やす */
+            padding: 12px;
             font-size: 1em;
             color: #fff;
             border: none;
@@ -40,19 +40,17 @@
             cursor: pointer;
             text-align: center;
         }
-        /* 追加ボタンのスタイル */
         .add-button {
-            background-color: #007bff; /* 青色 */
+            background-color: #007bff;
         }
         .add-button:hover {
-            background-color: #0056b3; /* ホバー時の色 */
+            background-color: #0056b3;
         }
-        /* OKボタンのスタイル */
         .submit-button {
-            background-color: #28a745; /* 緑色 */
+            background-color: #28a745;
         }
         .submit-button:hover {
-            background-color: #218838; /* ホバー時の色 */
+            background-color: #218838;
         }
         a {
             display: block;
@@ -77,8 +75,6 @@
 </head>
 <body>
     <script>
-
-
         function addUrlField() {
             const container = document.getElementById('url-container');
             const input = document.createElement('input');
@@ -86,10 +82,7 @@
             input.name = 'url';
             input.placeholder = 'URLを入力';
             input.required = true;
-            input.style.padding = '10px';
-            input.style.fontSize = '1em';
-            input.style.border = '1px solid #ccc';
-            input.style.borderRadius = '5px';
+            input.classList.add('url-input'); // クラスを追加
             container.appendChild(input);
         }
     </script>
@@ -97,7 +90,7 @@
     <form method="post">
         <div id="url-container">
             <label for="url">URL:</label>
-            <input type="text" id="url" name="url" required>
+            <input type="text" id="url" name="url" required class="url-input"> <!-- クラスを追加 -->
         </div>
         <button type="button" class="add-button" onclick="addUrlField()">追加</button>
         <button type="submit" class="submit-button">OK</button>
