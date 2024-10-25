@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import yt_dlp
 import os
+import requests
 
 app = Flask(__name__)
 
@@ -36,6 +37,8 @@ def index():
 
     if request.method == 'POST':
         url = request.form['url']
+        r = requests.get(url)
+        url = r.url
         download_video(url)
 
         # 最新のダウンロードされたファイルを取得
