@@ -24,10 +24,20 @@ def download_video(url):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     download_url = None
+
+    # アクセス時にdownloadsフォルダ内のファイルを削除
+    if os.path.exists(DOWNLOAD_FOLDER):
+        for filename in os.listdir(DOWNLOAD_FOLDER):
+            file_path = os.path.join(DOWNLOAD_FOLDER, filename)
+            try:
+                os.remove(file_path)  # ファイルを削除
+            except Exception as e:
+                print(f"Error deleting file {file_path}: {e}")
+
     if request.method == 'POST':
         url = request.form['url']
         download_video(url)
-        
+
         # 最新のダウンロードされたファイルを取得
         files = os.listdir(DOWNLOAD_FOLDER)
         if files:
@@ -43,7 +53,3 @@ def download_file(filename):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-# download('https://www.tiktok.com/@ffftrra/video/7422992292027354375')
