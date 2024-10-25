@@ -1,5 +1,4 @@
 Flask
 yt-dlp
 requests
-re
 gunicorn
