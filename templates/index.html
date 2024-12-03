@@ -5,6 +5,99 @@
     <link rel="icon" sizes="180x180" href="templates/S__18800649.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>uhs</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1, h3, h4 {
+            color: #333;
+        }
+        .url-field {
+            margin-bottom: 15px; /* フィールドの間隔 */
+        }
+        .container {
+            max-width: 600px;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">TikTokダウンロード</h1>
+        <h4 class="text-center"><a href="https://www.instagram.com/hoshinogenkyosei" target="_blank">@hoshinogenkyosei</a></h4>
+
+        <form method="post">
+            <div id="url-container">
+                <div class="url-field">
+                    <label for="url1" class="form-label">URL 1:</label>
+                    <input type="text" id="url1" name="url" required class="form-control">
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="addUrlField()">追加</button>
+            <button type="submit" class="btn btn-success">保存</button>
+        </form>
+
+        {% if download_urls %}
+        <h3 class="mt-4">ダウンロードリンク:</h3>
+        {% for download_url in download_urls %}
+        <a href="{{ url_for('download_file', filename=download_url) }}" class="d-block mt-2">{{ download_url }}</a>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        let urlCount = 1; // URLフィールドの数をカウント
+
+        function addUrlField() {
+            const container = document.getElementById('url-container');
+            urlCount++;
+
+            // 新しいフィールドを作成するためのdiv
+            const fieldContainer = document.createElement('div');
+            fieldContainer.classList.add('url-field');
+
+            // 新しいラベルを作成
+            const label = document.createElement('label');
+            label.htmlFor = 'url' + urlCount;
+            label.textContent = 'URL ' + urlCount + ':';
+            label.classList.add('form-label');
+
+            // 新しいテキストボックスを作成
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.id = 'url' + urlCount;
+            input.name = 'url';
+            input.placeholder = 'URLを入力';
+            input.required = true;
+            input.classList.add('form-control');
+
+            // フィールドコンテナにラベルと入力を追加
+            fieldContainer.appendChild(label);
+            fieldContainer.appendChild(input);
+
+            // メインのコンテナに追加
+            container.appendChild(fieldContainer);
+        }
+    </script>
+</body>
+</html>
+<!--
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" sizes="180x180" href="templates/S__18800649.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uhs</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -134,3 +227,6 @@
     {% endif %}
 </body>
 </html>
+
+-->
+
